@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>采油与地面工程运行管理系统</title>
+    <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript">
+
+	 var basePath =[[@{/}]];
+         $(function() {// 初始化内容
+
+         // 初始化内容
+             $.ajax({
+                 type: "post",
+                 url: basePath+"/hello",
+                 //dataType: "json",
+                 async:false,
+                 success: function (data) {
+                     if(data.status==200){
+                         $('#cotent').text(data.data.user_name)
+                     }else{
+                         alert("异常原因:"+data.msg)
+                     }
+                 },error: function (response, ajaxOptions, thrownError) {
+                     debugger;
+                     alert("error");
+                 }
+             });
+         });
+
+
+
+
+</script>
+</head>
+<body>
+欢迎你 <div id="cotent" style="color:red;font-size: 18px;"></div>
+</body>
+</html>

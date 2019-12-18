@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzw.springboot.dao.Admin.UsersDao">
+	<select id="selectById"
+		parameterType="com.wzw.springboot.entity.Admin.UsersEntity" resultType="com.wzw.springboot.entity.Admin.UsersEntity">
+		select * from T_SYS_USER
+		<where>
+			<if test="user_id!=null and user_id &gt; 0">
+				and user_id='${user_id}'
+			</if>
+			<if test="user_name!=null and user_name.length() &gt; 0">
+				and user_name='${user_name}'
+			</if>
+			<if test="password!=null and password.length() &gt; 0">
+				and password='${password}'
+			</if>
+		</where>
+	</select>
+
+
+</mapper>

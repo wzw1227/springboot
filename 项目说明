@@ -1,0 +1,17 @@
+==========================================================================================
+一、异常捕获说明：
+    本项目已加入全局异常捕获MyExceptionHandler,捕获异常进行判断，如果是ajax请求在在页面中使用alert提示错误，否则跳转错误页面提示
+==========================================================================================
+二、JsonResult数据封装类
+    根据数据查询结果对其封装，成功使用JsonResult.ok，异常使用JsonResult.errorException，页面根据status判断操作结构及异常
+    @ResponseBody
+	@RequestMapping("/getuser")
+	public JsonResult hellojson(Model model, HttpSession session) {
+		UsersEntity user = new UsersEntity();
+		try {
+        	return JsonResult.ok(user);
+        } catch (Exception e) {
+        	return JsonResult.errorException(e.getMessage());
+        }
+	}
+===========================================================================================
